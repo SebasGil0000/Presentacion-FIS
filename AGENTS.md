@@ -55,3 +55,25 @@
 | 6 | Estudiante | Clic en "Detener Lectura" |
 | 7 | Sistema SayIt | Calcular métricas de precisión → Guardar registro de sesión |
 | 5a-alt | Sistema SayIt (No) | Notificar error de conexión |
+
+---
+
+## assets/diagramas.txt — Diagrama de Clases
+
+**Clases del modelo de dominio:**
+
+| Clase | Tipo | Atributos Clave | Métodos Clave |
+|-------|------|-----------------|---------------|
+| `Usuario` | Clase | id, correoElectronico, nombreCompleto | iniciarSesion() |
+| `SesionEvaluacion` | Clase | idSesion, fechaInicio, totalAciertos, totalErrores | calcularPorcentajePrecision(), generarReporteDesempeno() |
+| `TextoEstudio` | Clase | idTexto, titulo, contenidoBase, palabras | obtenerPalabraActual(indice) |
+| `AlgoritmoComparacion` | Clase | textoReferencia | evaluarCoincidenciaExacta(), sincronizarFlujo() |
+| `MotorReconocimientoVoz` | Interfaz | — | iniciarStreamAudio(), detenerStreamAudio() |
+| `ServicioAzureSpeech` | Clase | claveAcceso, regionDespliegue | establecerConexion(), convertirAudioATexto() |
+
+**Relaciones:**
+- `Usuario` 1 — * `SesionEvaluacion` (*ejecuta*)
+- `SesionEvaluacion` * — 1 `TextoEstudio` (*requiere*)
+- `SesionEvaluacion` 1 — 1 `AlgoritmoComparacion` (*delega análisis a*)
+- `AlgoritmoComparacion` ..> `MotorReconocimientoVoz` (*consume*)
+- `ServicioAzureSpeech` ..|> `MotorReconocimientoVoz` (*implementa*)
