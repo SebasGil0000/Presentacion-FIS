@@ -388,88 +388,6 @@
                 </div>
             </section>
 
-            <!-- OBJETIVOS -->
-            <section>
-                <h2>Objetivos del Proyecto</h2>
-                
-                <div class="card text-center fragment fade-up" data-fragment-index="1" style="margin-bottom: 1rem; padding: 1rem;">
-                    <h3 style="font-size: 0.85em; color: var(--accent-color); margin-bottom: 0.3rem;">Objetivo General</h3>
-                    <p style="font-size: 0.65em; font-style: italic; margin: 0;">
-                        "Desarrollar una app web interactiva que evalúe y mejore la pronunciación del inglés mediante retroalimentación visual en tiempo real usando IA."
-                    </p>
-                </div>
-
-                <div class="grid-3 fragment fade-up" data-fragment-index="2">
-                    <div class="card text-center" style="padding: 1rem;">
-                        <i class="fas fa-microphone icon-large" style="font-size: 1.2em;"></i>
-                        <h4 style="font-size: 0.7em; margin-bottom: 0.5rem;">Captura</h4>
-                        <p style="font-size: 0.55em; color: #aaa;">Captura de audio directo desde el navegador.</p>
-                    </div>
-                    <div class="card text-center" style="padding: 1rem;">
-                        <i class="fas fa-cloud icon-large" style="font-size: 1.2em; color: #3498db;"></i>
-                        <h4 style="font-size: 0.7em; margin-bottom: 0.5rem;">Integración</h4>
-                        <p style="font-size: 0.55em; color: #aaa;">Motor de reconocimiento (Azure Speech API).</p>
-                    </div>
-                    <div class="card text-center" style="padding: 1rem;">
-                        <i class="fas fa-check-circle icon-large" style="font-size: 1.2em;"></i>
-                        <h4 style="font-size: 0.7em; margin-bottom: 0.5rem;">Feedback</h4>
-                        <p style="font-size: 0.55em; color: #aaa;">Interfaz visual que marca aciertos/errores.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- JUSTIFICACIÓN -->
-            <section>
-                <h2>Justificación</h2>
-                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 1rem;">¿Por qué SayIt es viable y necesario?</p>
-                
-                <div class="grid-2">
-                    <div class="card text-left fragment">
-                        <i class="fas fa-graduation-cap icon-large"></i>
-                        <h3 style="font-size: 0.85em; margin-bottom: 0.5rem;">Impacto Educativo</h3>
-                        <p style="font-size: 0.6em; line-height: 1.4; color: #ccc;">
-                            Actúa como "espejo fonético", acelerando el aprendizaje mediante condicionamiento visual y gamificación.
-                        </p>
-                    </div>
-                    
-                    <div class="card text-left fragment">
-                        <i class="fas fa-server icon-large" style="color: #3498db;"></i>
-                        <h3 style="font-size: 0.85em; margin-bottom: 0.5rem;">Viabilidad Técnica</h3>
-                        <p style="font-size: 0.6em; line-height: 1.4; color: #ccc;">
-                            APIs modernas reducen latencia y costo. Permite un producto web ligero sin instalar software pesado.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ALCANCE Y DELIMITACIÓN -->
-            <section>
-                <h2>Alcance y Delimitación</h2>
-                
-                <div class="grid-2">
-                    <div class="card text-left fragment">
-                        <h3 style="font-size: 0.85em; color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fas fa-compress-arrows-alt"></i> Alcance</h3>
-                        <ul class="styled-list">
-                            <li>Catálogo predefinido de textos.</li>
-                            <li>Captura y transcripción en tiempo real.</li>
-                            <li>Comparación palabra por palabra.</li>
-                            <li>Feedback dinámico (Verde/Rojo).</li>
-                            <li>Métricas de precisión finales.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card text-left fragment" style="border-color: rgba(255,255,255,0.2);">
-                        <h3 style="font-size: 0.85em; color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-ban"></i> Fuera del MVP</h3>
-                        <ul class="styled-list red" style="color: #aaa;">
-                            <li>Análisis de entonación o acento.</li>
-                            <li>Soporte offline (requiere internet).</li>
-                            <li>Carga de textos personalizados.</li>
-                            <li>Navegadores sin soporte <code>MediaRecorder</code>.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
             <!-- METODOLOGÍA -->
             <section>
                 <h2>Metodología</h2>
@@ -510,29 +428,125 @@
                 </div>
             </section>
 
+            <!-- TÉCNICAS DE RECOPILACIÓN -->
+            <section>
+                <h2>Técnicas de Recopilación</h2>
+                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 1rem;">Elicitación de requisitos con usuarios</p>
+
+                <div class="grid-2">
+                    <div class="card text-left fragment">
+                        <i class="fas fa-clipboard-list icon-large"></i>
+                        <h3 style="font-size: 0.85em; color: var(--accent-color); margin-bottom: 0.5rem;">Entrevistas</h3>
+                        <ul class="styled-list">
+                            <li>Entrevistas semiestructuradas con estudiantes de inglés niveles A1–B2.</li>
+                            <li>Se identificaron necesidades, frustraciones y hábitos de práctica.</li>
+                            <li><strong>Hallazgo:</strong> El 92% reporta la falta de feedback inmediato como el mayor obstáculo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card text-left fragment">
+                        <i class="fas fa-poll icon-large" style="color: #3498db;"></i>
+                        <h3 style="font-size: 0.85em; color: #3498db; margin-bottom: 0.5rem;">Cuestionarios</h3>
+                        <ul class="styled-list">
+                            <li>Cuestionarios aplicados a una muestra representativa de la población objetivo.</li>
+                            <li>Validación del prototipo: los usuarios confirmaron que el código de colores reduce la ansiedad al hablar.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REQUISITOS FUNCIONALES -->
+            <section>
+                <h2 style="font-size: 1.2em;">Requisitos Funcionales</h2>
+                <p class="text-muted" style="font-size: 0.55em; margin-bottom: 0.3rem;">Cobertura de Requisitos Funcionales (RF01–RF06)</p>
+
+                <table class="req-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">RF</th>
+                                <th style="width: 35%;">Requisito</th>
+                                <th style="width: 55%;">Criterio de Aceptación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>RF01</td><td>Catálogo de Textos</td><td>CRUD de textos categorizados por nivel y tema</td></tr>
+                            <tr><td>RF02</td><td>Gestión de Perfiles</td><td>Registro, autenticación y seguimiento de progreso individual</td></tr>
+                            <tr><td>RF03</td><td>Sesión de Lectura</td><td>Captura de audio, sincronización con texto base y visualización en tiempo real</td></tr>
+                            <tr><td>RF04</td><td>Algoritmo de Comparación</td><td>Coincidencia fonética aproximada entre texto esperado y transcripción</td></tr>
+                            <tr><td>RF05</td><td>Feedback Cromático</td><td>Resaltado por palabra: <span style="color: var(--accent-color);">correcta</span>, <span style="color: #f1c40f;">imprecisa</span>, <span style="color: var(--accent-red);">incorrecta</span></td></tr>
+                            <tr><td>RF06</td><td>Historial de Métricas</td><td>Precisión general, tiempo por sesión y palabras por minuto</td></tr>
+                        </tbody>
+                    </table>
+            </section>
+
+            <!-- BPMN REDUCIDO -->
+            <section>
+                <h2>BPMN Reducido</h2>
+                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 1rem;">Principales procesos del negocio</p>
+
+                <div style="display: flex; align-items: stretch; gap: 0.5rem; margin-top: 0.5rem;">
+                    <div class="card text-left fragment" style="padding: 0.8rem; flex: 1;">
+                        <h3 style="font-size: 0.7em; color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fas fa-user-graduate"></i> Estudiante</h3>
+                        <ul style="list-style: none; padding: 0; font-size: 0.55em; color: #ccc; line-height: 1.8;">
+                            <li><i class="fas fa-arrow-right" style="color: var(--accent-color); font-size: 0.7em;"></i> Seleccionar texto</li>
+                            <li><i class="fas fa-arrow-right" style="color: var(--accent-color); font-size: 0.7em;"></i> Iniciar lectura</li>
+                            <li><i class="fas fa-arrow-right" style="color: var(--accent-color); font-size: 0.7em;"></i> Leer en voz alta</li>
+                            <li><i class="fas fa-arrow-right" style="color: var(--accent-color); font-size: 0.7em;"></i> Detener lectura</li>
+                        </ul>
+                    </div>
+                    <div class="card text-left fragment" style="padding: 0.8rem; flex: 1; border-color: rgba(52,152,219,0.3);">
+                        <h3 style="font-size: 0.7em; color: #3498db; margin-bottom: 0.5rem;"><i class="fas fa-cogs"></i> Sistema SayIt</h3>
+                        <ul style="list-style: none; padding: 0; font-size: 0.55em; color: #ccc; line-height: 1.8;">
+                            <li><i class="fas fa-arrow-right" style="color: #3498db; font-size: 0.7em;"></i> Activar captura de audio</li>
+                            <li><i class="fas fa-arrow-right" style="color: #3498db; font-size: 0.7em;"></i> Enviar a API (si hay conexión)</li>
+                            <li><i class="fas fa-arrow-right" style="color: #3498db; font-size: 0.7em;"></i> Comparar transcripción (RF04)</li>
+                            <li><i class="fas fa-arrow-right" style="color: #3498db; font-size: 0.7em;"></i> Actualizar colores (RF05)</li>
+                            <li><i class="fas fa-arrow-right" style="color: #3498db; font-size: 0.7em;"></i> Calcular métricas y guardar</li>
+                        </ul>
+                    </div>
+                    <div class="card text-left fragment" style="padding: 0.8rem; flex: 1; border-color: rgba(155,89,182,0.3);">
+                        <h3 style="font-size: 0.7em; color: #9b59b6; margin-bottom: 0.5rem;"><i class="fas fa-cloud"></i> API Reconocimiento</h3>
+                        <ul style="list-style: none; padding: 0; font-size: 0.55em; color: #ccc; line-height: 1.8;">
+                            <li><i class="fas fa-arrow-right" style="color: #9b59b6; font-size: 0.7em;"></i> Procesar audio</li>
+                            <li><i class="fas fa-arrow-right" style="color: #9b59b6; font-size: 0.7em;"></i> Transcribir a texto</li>
+                        </ul>
+                        <div style="margin-top: 0.8rem; padding: 0.3rem 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 0.5em; color: #f1c40f;">
+                            <i class="fas fa-exclamation-triangle"></i> Sin conexión: notificar error
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- DIAGRAMA DE CASOS DE USO -->
             <section>
                 <h2>Casos de Uso</h2>
-                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 0.5rem;">Interacciones principales</p>
+                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 0.5rem;">Interacciones del estudiante con el sistema</p>
                 
                 <div class="diagram-container" style="flex-direction: column; align-items: stretch; padding: 1rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem;">
-                        <div style="text-align: center; flex: 1;">
-                            <i class="fas fa-user-graduate" style="font-size: 2.5em; color: var(--accent-color);"></i><br>
+                    <div style="display: flex; justify-content: center; align-items: center; padding: 0.3rem; gap: 0.5rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-user-graduate" style="font-size: 2.2em; color: var(--accent-color);"></i><br>
                             <span style="font-size: 0.5em; color: #ccc;">Estudiante</span>
                         </div>
                         
-                        <div style="flex: 2; display: flex; flex-direction: column; gap: 0.5rem; border-left: 1px dashed #444; border-right: 1px dashed #444; padding: 0 1rem;">
-                            <div class="diagram-node" style="padding: 0.4rem;">Seleccionar Texto</div>
-                            <div class="diagram-node secondary" style="padding: 0.4rem;">Iniciar Lectura</div>
-                            <div class="diagram-node" style="padding: 0.4rem;">Ver Feedback Visual</div>
-                            <div class="diagram-node secondary" style="padding: 0.4rem;">Consultar Métricas</div>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem; border-left: 1px dashed #444; border-right: 1px dashed #444; padding: 0 0.8rem;">
+                            <div class="diagram-node" style="padding: 0.3rem 0.6rem; font-size: 0.5em;">UC1: Seleccionar texto</div>
+                            <div class="diagram-node secondary" style="padding: 0.3rem 0.6rem; font-size: 0.5em;">UC2: Realizar lectura</div>
+                            <div class="diagram-node" style="padding: 0.3rem 0.6rem; font-size: 0.5em;">UC3: Visualizar colores</div>
+                            <div class="diagram-node secondary" style="padding: 0.3rem 0.6rem; font-size: 0.5em;">UC5: Consultar reporte</div>
+                            <div style="display: flex; align-items: center; gap: 0.3rem; font-size: 0.5em; color: #888; padding-left: 0.3rem;">
+                                <span>UC4: Transcribir audio</span>
+                                <span style="color: #f1c40f; font-size: 0.7em;">⟨⟨include⟩⟩</span>
+                            </div>
                         </div>
 
-                        <div style="text-align: center; flex: 1;">
-                            <i class="fas fa-cloud" style="font-size: 2.5em; color: #3498db;"></i><br>
-                            <span style="font-size: 0.5em; color: #ccc;">Azure API</span>
+                        <div style="text-align: center;">
+                            <i class="fas fa-cloud" style="font-size: 2.2em; color: #3498db;"></i><br>
+                            <span style="font-size: 0.5em; color: #ccc;">Azure Speech API</span>
                         </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 0.3rem; font-size: 0.45em; color: #666;">
+                        UC4 (Transcribir audio) es incluido por UC2 (Realizar lectura)
                     </div>
                 </div>
             </section>
@@ -610,71 +624,6 @@
                             <li>Separación estricta Frontend/API.</li>
                         </ul>
                     </div>
-                </div>
-            </section>
-
-            <!-- TÉCNICAS DE RECOPILACIÓN -->
-            <section>
-                <h2>Técnicas de Recopilación</h2>
-                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 1rem;">Elicitación de requisitos con usuarios</p>
-
-                <div class="grid-2">
-                    <div class="card text-left fragment">
-                        <i class="fas fa-clipboard-list icon-large"></i>
-                        <h3 style="font-size: 0.85em; color: var(--accent-color); margin-bottom: 0.5rem;">Entrevistas</h3>
-                        <ul class="styled-list">
-                            <li>Entrevistas semiestructuradas con estudiantes de inglés niveles A1–B2.</li>
-                            <li>Se identificaron necesidades, frustraciones y hábitos de práctica.</li>
-                            <li><strong>Hallazgo:</strong> El 92% reporta la falta de feedback inmediato como el mayor obstáculo.</li>
-                        </ul>
-                    </div>
-
-                    <div class="card text-left fragment">
-                        <i class="fas fa-poll icon-large" style="color: #3498db;"></i>
-                        <h3 style="font-size: 0.85em; color: #3498db; margin-bottom: 0.5rem;">Cuestionarios</h3>
-                        <ul class="styled-list">
-                            <li>Cuestionarios aplicados a una muestra representativa de la población objetivo.</li>
-                            <li>Validación del prototipo: los usuarios confirmaron que el código de colores reduce la ansiedad al hablar.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- MATRIZ DE REQUISITOS -->
-            <section>
-                <h2 style="font-size: 1.2em;">Matriz de Requisitos</h2>
-                <p class="text-muted" style="font-size: 0.55em; margin-bottom: 0.3rem;">Cobertura de Requisitos Funcionales (RF01–RF06)</p>
-
-                <table class="req-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 10%;">RF</th>
-                                <th style="width: 35%;">Requisito</th>
-                                <th style="width: 55%;">Criterio de Aceptación</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>RF01</td><td>Catálogo de Textos</td><td>CRUD de textos categorizados por nivel y tema</td></tr>
-                            <tr><td>RF02</td><td>Gestión de Perfiles</td><td>Registro, autenticación y seguimiento de progreso individual</td></tr>
-                            <tr><td>RF03</td><td>Sesión de Lectura</td><td>Captura de audio, sincronización con texto base y visualización en tiempo real</td></tr>
-                            <tr><td>RF04</td><td>Algoritmo de Comparación</td><td>Coincidencia fonética aproximada entre texto esperado y transcripción</td></tr>
-                            <tr><td>RF05</td><td>Feedback Cromático</td><td>Resaltado por palabra: <span style="color: var(--accent-color);">correcta</span>, <span style="color: #f1c40f;">imprecisa</span>, <span style="color: var(--accent-red);">incorrecta</span></td></tr>
-                            <tr><td>RF06</td><td>Historial de Métricas</td><td>Precisión general, tiempo por sesión y palabras por minuto</td></tr>
-                        </tbody>
-                    </table>
-            </section>
-
-            
-
-            <!-- BPMN REDUCIDO -->
-            <section>
-                <h2>BPMN Reducido</h2>
-                <p class="text-muted" style="font-size: 0.7em; margin-bottom: 1rem;">Principales procesos del negocio</p>
-                
-                <div class="card text-center" style="padding: 2rem;">
-                    <i class="fas fa-image" style="font-size: 3em; opacity: 0.3; margin-bottom: 1rem;"></i>
-                    <p style="font-size: 0.6em; color: #aaa;">Diagrama completo se presenta por separado</p>
-                    <p style="font-size: 0.55em; color: #666;">Procesos principales: registro de usuario, selección de texto, sesión de lectura y generación de métricas.</p>
                 </div>
             </section>
 
