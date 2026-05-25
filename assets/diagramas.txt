@@ -1,0 +1,156 @@
+@startuml
+left to right direction
+actor Estudiante
+
+package "SayIt" {
+  usecase "Seleccionar texto" as UC1
+  usecase "Realizar lectura" as UC2
+  usecase "Visualizar colores" as UC3
+  usecase "Transcribir audio" as UC4
+  usecase "Consultar reporte" as UC5
+}
+
+actor "Azure Speech API" as API
+
+Estudiante --> UC1
+Estudiante --> UC2
+Estudiante --> UC3
+Estudiante --> UC5
+
+UC2 ..> UC4 : <<include>>
+UC4 --> API
+@enduml
+
+@startuml
+actor Usuario
+participant "Interfaz (Frontend)" as Frontend
+participant "Lógica de Comparación" as Logica
+participant "Azure Speech API" as API
+
+Usuario -> Frontend : Iniciar sesión de lectura
+activate Frontend
+
+Frontend -> Usuario : Solicitar acceso a micrófono
+Usuario --> Frontend : Acceso concedido
+
+Frontend -> Logica : Preparar entorno (ID Texto Base)
+activate Logica
+Logica --> Frontend : Entorno listo
+deactivate Logica
+
+alt Bucle de evaluación en tiempo real
+    Usuario -> Frontend : Locución de texto (Audio)
+    
+    Frontend -> API : Transmisión de stream de audio
+    activate API
+    API --> Frontend : Retorno de transcripción parcial
+    deactivate API
+
+    Frontend -> Logica : Solicitud de validación de texto
+    activate Logica
+    Logica --> Frontend : Estado de palabra (Acierto/Error)
+    deactivate Logica
+
+    Frontend -> Usuario : Renderizar cambio de color en pantalla
+end
+
+Usuario -> Frontend : Finalizar lectura
+
+Frontend -> Logica : Cerrar sesión de captura
+activate Logica
+Logica -> Logica : Procesar métricas finales
+Logica --> Frontend : Objeto de resultados
+deactivate Logica
+
+Frontend -> Usuario : Visualizar reporte de desempeño
+deactivate Frontend
+@enduml
+
+@startuml
+|Estudiante|
+start
+:Seleccionar texto del catálogo;
+:Clic en "Iniciar Lectura";
+
+|Sistema SayIt|
+:Activar captura de audio;
+
+|Estudiante|
+:Leer texto en voz alta;
+
+|Sistema SayIt|
+if (¿Conectividad disponible?) then (Sí)
+  :Enviar fragmento de audio;
+  
+  |API de Reconocimiento|
+  :Procesar y transcribir audio;
+  
+  |Sistema SayIt|
+  :Comparar transcripción (RF 04);
+  :Actualizar colores en interfaz (RF 05);
+  
+  |Estudiante|
+  :Clic en "Detener Lectura";
+  
+  |Sistema SayIt|
+  :Calcular métricas de precisión;
+  :Guardar registro de sesión;
+else (No)
+  |Sistema SayIt|
+  :Notificar error de conexión;
+endif
+
+|Sistema SayIt|
+stop
+
+@startuml
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  + id : UUID
+  + correoElectronico : String
+  - nombreCompleto : String
+  + iniciarSesion()
+}
+
+class SesionEvaluacion {
+  + idSesion : UUID
+  + fechaInicio : DateTime
+  + totalAciertos : int
+  + totalErrores : int
+  + calcularPorcentajePrecision() : float
+  + generarReporteDesempeno() : Reporte
+}
+
+class TextoEstudio {
+  + idTexto : int
+  + titulo : String
+  + contenidoBase : String
+  + palabras : List<String>
+  + obtenerPalabraActual(indice: int)
+}
+
+class AlgoritmoComparacion {
+  - textoReferencia : TextoEstudio
+  + evaluarCoincidenciaExacta(palabraHablada: String, palabraEsperada: String) : boolean
+  + sincronizarFlujo(transcripcion: String)
+}
+
+interface MotorReconocimientoVoz {
+  + iniciarStreamAudio()
+  + detenerStreamAudio()
+}
+
+class ServicioAzureSpeech {
+  - claveAcceso : String
+  - regionDespliegue : String
+  + establecerConexion()
+  - convertirAudioATexto(flujo: AudioStream) : String
+}
+
+Usuario "1" -- "*" SesionEvaluacion : ejecuta >
+SesionEvaluacion "*" -- "1" TextoEstudio : requiere >
+SesionEvaluacion "1" -- "1" AlgoritmoComparacion : delega analisis a >
+AlgoritmoComparacion ..> MotorReconocimientoVoz : consume >
+ServicioAzureSpeech ..|> MotorReconocimientoVoz : implementa
+@enduml

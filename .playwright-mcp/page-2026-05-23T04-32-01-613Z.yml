@@ -1,0 +1,76 @@
+- application [ref=e2]:
+  - generic:
+    - text:        
+    - generic:
+      - heading [level=2]: Objetivos del Proyecto
+      - generic:
+        - heading [level=3]: Objetivo General
+        - paragraph: "\"Desarrollar una app web interactiva que evalúe y mejore la pronunciación del inglés mediante retroalimentación visual en tiempo real usando IA.\""
+      - generic:
+        - generic:
+          - generic: 
+          - heading [level=4]: Captura
+          - paragraph: Captura de audio directo desde el navegador.
+        - generic:
+          - generic: 
+          - heading [level=4]: Integración
+          - paragraph: Motor de reconocimiento (Azure Speech API).
+        - generic:
+          - generic: 
+          - heading [level=4]: Feedback
+          - paragraph: Interfaz visual que marca aciertos/errores.
+    - generic:
+      - heading [level=2]: Justificación
+      - paragraph: ¿Por qué SayIt es viable y necesario?
+      - generic:
+        - generic:
+          - generic: 
+          - heading [level=3]: Impacto Educativo
+          - paragraph: Actúa como "espejo fonético", acelerando el aprendizaje mediante condicionamiento visual y gamificación.
+        - generic:
+          - generic: 
+          - heading [level=3]: Viabilidad Técnica
+          - paragraph: APIs modernas reducen latencia y costo. Permite un producto web ligero sin instalar software pesado.
+    - heading "Alcance y Delimitación" [level=2] [ref=e4]
+    - generic:
+      - heading [level=2]: Modelo de Negocio
+      - paragraph: SaaS Freemium B2C
+      - generic:
+        - generic:
+          - heading [level=3]: Tier Gratuito
+          - generic: $0/mes
+          - list:
+            - listitem:  Uso como imán de adquisición.
+            - listitem:  Límite de lecturas diarias.
+            - listitem:  Catálogo básico.
+            - listitem:  Precisión %.
+        - generic:
+          - heading [level=3]: Tier Pro
+          - generic: $4.99/mes
+          - list:
+            - listitem:  Lecturas ilimitadas.
+            - listitem:  Catálogo completo.
+            - listitem:  Historial en la nube.
+            - listitem:  Carga de textos propios.
+    - generic:
+      - heading [level=2]: Casos de Uso
+      - paragraph: Interacciones principales
+      - generic:
+        - generic:
+          - generic:
+            - generic: 
+            - text: Estudiante
+          - generic:
+            - generic: Seleccionar Texto
+            - generic: Iniciar Lectura
+            - generic: Ver Feedback Visual
+            - generic: Consultar Métricas
+          - generic:
+            - generic: 
+            - text: Azure API
+    - text: 
+  - complementary:
+    - button "previous slide" [ref=e17] [cursor=pointer]
+    - button "next slide" [ref=e19] [cursor=pointer]
+  - text: Speaker notes
+  - generic [ref=e23]: Alcance y Delimitación. Alcance. Catálogo predefinido de textos. Captura y transcripción en tiempo real. Comparación palabra por palabra. Feedback dinámico (Verde/Rojo). Métricas de precisión finales. Fuera del MVP. Análisis de entonación o acento. Soporte offline (requiere internet). Carga de textos personalizados. Navegadores sin soporte MediaRecorder .
