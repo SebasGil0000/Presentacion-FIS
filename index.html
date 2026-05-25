@@ -557,106 +557,44 @@
             <!-- DIAGRAMA DE CLASES -->
             <section>
                 <h2>Estructura de Clases</h2>
-                <p class="text-muted" style="font-size: 0.65em; margin-bottom: 0.3rem;">Modelo del dominio</p>
+                <p class="text-muted" style="font-size: 0.65em; margin-bottom: 0.3rem;">Vista reducida del modelo de dominio</p>
 
-                <div class="grid-3" style="gap: 0.4rem; margin-top: 0.2rem;">
-                    <div class="code-box" style="padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-red"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: var(--accent-color); margin: 0 0 2px 0; font-size: 1.2em;">Usuario</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                + id : UUID<br>
-                                + correoElectronico : String<br>
-                                - nombreCompleto : String
+                <div class="diagram-container" style="flex-direction: column; padding: 0.8rem;">
+                    <div style="display: flex; justify-content: center; gap: 0.8rem; width: 100%;">
+
+                        <div style="flex: 1; text-align: center; border-right: 1px dashed #444; padding: 0 0.5rem;">
+                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Actor</div>
+                            <div class="diagram-node" style="font-size: 0.55em; display: inline-block;">Usuario</div>
+                            <div style="font-size: 0.4em; color: #888; margin-top: 4px;">inicia sesiones</div>
+                        </div>
+
+                        <div style="flex: 2; text-align: center; border-right: 1px dashed #444; padding: 0 0.5rem;">
+                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Sistema</div>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem; align-items: center;">
+                                <div class="diagram-node secondary" style="font-size: 0.55em;">SesionEvaluacion</div>
+                                <div style="display: flex; gap: 0.6rem; align-items: center;">
+                                    <div class="diagram-node" style="border-color: #2ecc71; font-size: 0.5em;">TextoEstudio</div>
+                                    <div style="color: rgba(255,255,255,0.2); font-size: 0.7em;">↕</div>
+                                    <div class="diagram-node" style="border-color: #9b59b6; font-size: 0.5em;">AlgoritmoComparacion</div>
+                                </div>
                             </div>
-                            <div style="color: #ccc;">+ iniciarSesion()</div>
+                        </div>
+
+                        <div style="flex: 1; text-align: center; padding: 0 0.5rem;">
+                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Externo</div>
+                            <div class="diagram-node" style="border-color: #3498db; font-size: 0.5em;">ServicioAzureSpeech</div>
+                            <div style="font-size: 0.4em; color: #888; margin-top: 4px;">procesa audio</div>
                         </div>
                     </div>
 
-                    <div class="code-box" style="border-color: #e67e22; padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-yellow"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: #e67e22; margin: 0 0 2px 0; font-size: 1.2em;">SesionEvaluacion</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                + idSesion : UUID<br>
-                                + fechaInicio : DateTime<br>
-                                + totalAciertos : int<br>
-                                + totalErrores : int
-                            </div>
-                            <div style="color: #ccc;">
-                                + calcularPorcentajePrecision() : float<br>
-                                + generarReporteDesempeno() : Reporte
-                            </div>
-                        </div>
+                    <div style="margin-top: 0.5rem; font-size: 0.4em; color: #666; text-align: center; line-height: 1.6;">
+                        <span style="background: rgba(155,89,182,0.12); padding: 2px 8px; border-radius: 3px;">Usuario 1 → * SesionEvaluacion</span>
+                        <span style="background: rgba(46,204,113,0.12); padding: 2px 8px; border-radius: 3px;">* SesionEvaluacion → 1 TextoEstudio</span>
+                        <span style="background: rgba(155,89,182,0.12); padding: 2px 8px; border-radius: 3px;">1 SesionEvaluacion → 1 AlgoritmoComparacion</span>
+                        <br>
+                        <span style="background: rgba(26,188,156,0.12); padding: 2px 8px; border-radius: 3px;">AlgoritmoComparacion consume &laquo;interface&raquo; MotorReconocimientoVoz</span>
+                        <span style="background: rgba(52,152,219,0.12); padding: 2px 8px; border-radius: 3px;">ServicioAzureSpeech implementa MotorReconocimientoVoz</span>
                     </div>
-
-                    <div class="code-box" style="border-color: #2ecc71; padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-green"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: #2ecc71; margin: 0 0 2px 0; font-size: 1.2em;">TextoEstudio</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                + idTexto : int<br>
-                                + titulo : String<br>
-                                + contenidoBase : String<br>
-                                + palabras : List&lt;String&gt;
-                            </div>
-                            <div style="color: #ccc;">+ obtenerPalabraActual(indice: int)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid-3" style="gap: 0.4rem; margin-top: 0.4rem;">
-                    <div class="code-box" style="border-color: #9b59b6; padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-orange"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: #9b59b6; margin: 0 0 2px 0; font-size: 1.2em;">AlgoritmoComparacion</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                - textoReferencia : TextoEstudio
-                            </div>
-                            <div style="color: #ccc;">
-                                + evaluarCoincidenciaExacta(...) : boolean<br>
-                                + sincronizarFlujo(transcripcion: String)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="code-box" style="border-color: #1abc9c; border-style: dashed; padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-blue"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: #1abc9c; margin: 0 0 2px 0; font-size: 1.1em;"><span style="font-style: italic;">&laquo;interface&raquo;</span><br>MotorReconocimientoVoz</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                &nbsp;
-                            </div>
-                            <div style="color: #ccc;">
-                                + iniciarStreamAudio()<br>
-                                + detenerStreamAudio()
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="code-box" style="border-color: #3498db; padding: 0.6rem;">
-                        <div class="code-header"><div class="mac-btn mac-purple"></div></div>
-                        <div style="margin-top: 10px;">
-                            <h4 style="color: #3498db; margin: 0 0 2px 0; font-size: 1.2em;">ServicioAzureSpeech</h4>
-                            <div style="color: #888; border-bottom: 1px solid #444; padding-bottom: 2px; margin-bottom: 2px;">
-                                - claveAcceso : String<br>
-                                - regionDespliegue : String
-                            </div>
-                            <div style="color: #ccc;">
-                                + establecerConexion()<br>
-                                - convertirAudioATexto(flujo: AudioStream) : String
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 0.4rem; font-size: 0.35em; color: #aaa; text-align: center; line-height: 1.6;">
-                    <span style="background: rgba(155,89,182,0.15); padding: 1px 6px; border-radius: 3px;">1 Usuario → * SesionEvaluacion</span>
-                    <span style="background: rgba(46,204,113,0.15); padding: 1px 6px; border-radius: 3px;">* SesionEvaluacion → 1 TextoEstudio</span>
-                    <span style="background: rgba(155,89,182,0.15); padding: 1px 6px; border-radius: 3px;">1 SesionEvaluacion → 1 AlgoritmoComparacion</span>
-                    <br>
-                    <span style="background: rgba(26,188,156,0.15); padding: 1px 6px; border-radius: 3px;">AlgoritmoComparacion ..&gt; &laquo;interface&raquo; MotorReconocimientoVoz</span>
-                    <span style="background: rgba(52,152,219,0.15); padding: 1px 6px; border-radius: 3px;">ServicioAzureSpeech ..|&gt; MotorReconocimientoVoz</span>
                 </div>
             </section>
 
