@@ -167,6 +167,33 @@
         .mac-blue { background: #3498db; }
         .mac-purple { background: #9b59b6; }
 
+        /* UML Class Card — 3 compartimentos tipo diagrama de clases */
+        .uml-card {
+            background: #1e1e1e;
+            border-radius: 6px;
+            border: 2px solid #444;
+            font-family: monospace;
+            min-width: 100px;
+            max-width: 170px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        .uml-card .uc-name {
+            padding: 3px 6px;
+            font-weight: bold;
+            font-size: 0.45em;
+            text-align: center;
+            border-bottom: 2px solid currentColor;
+            background: rgba(255,255,255,0.03);
+        }
+        .uml-card .uc-body {
+            padding: 2px 6px;
+            font-size: 0.35em;
+            line-height: 1.4;
+        }
+        .uml-card .uc-divider {
+            border-bottom: 1px solid #333;
+        }
+
         .diagram-container {
             display: flex;
             justify-content: center;
@@ -556,44 +583,120 @@
 
             <!-- DIAGRAMA DE CLASES -->
             <section>
-                <h2>Estructura de Clases</h2>
-                <p class="text-muted" style="font-size: 0.65em; margin-bottom: 0.3rem;">Vista reducida del modelo de dominio</p>
+                <h2 style="font-size: 1.4em;">Estructura de Clases</h2>
+                <p class="text-muted" style="font-size: 0.6em; margin-bottom: 0.3rem;">Diagrama de clases del modelo de dominio</p>
 
-                <div class="diagram-container" style="flex-direction: column; padding: 0.8rem;">
-                    <div style="display: flex; justify-content: center; gap: 0.8rem; width: 100%;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
 
-                        <div style="flex: 1; text-align: center; border-right: 1px dashed #444; padding: 0 0.5rem;">
-                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Actor</div>
-                            <div class="diagram-node" style="font-size: 0.55em; display: inline-block;">Usuario</div>
-                            <div style="font-size: 0.4em; color: #888; margin-top: 4px;">inicia sesiones</div>
-                        </div>
+                    <!-- Row 1: Usuario → SesionEvaluacion → TextoEstudio -->
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
 
-                        <div style="flex: 2; text-align: center; border-right: 1px dashed #444; padding: 0 0.5rem;">
-                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Sistema</div>
-                            <div style="display: flex; flex-direction: column; gap: 0.4rem; align-items: center;">
-                                <div class="diagram-node secondary" style="font-size: 0.55em;">SesionEvaluacion</div>
-                                <div style="display: flex; gap: 0.6rem; align-items: center;">
-                                    <div class="diagram-node" style="border-color: #2ecc71; font-size: 0.5em;">TextoEstudio</div>
-                                    <div style="color: rgba(255,255,255,0.2); font-size: 0.7em;">↕</div>
-                                    <div class="diagram-node" style="border-color: #9b59b6; font-size: 0.5em;">AlgoritmoComparacion</div>
-                                </div>
+                        <div class="uml-card" style="border-color: var(--accent-color);">
+                            <div class="uc-name" style="color: var(--accent-color);">Usuario</div>
+                            <div class="uc-body">
+                                + id : UUID<br>
+                                + email : String
+                            </div>
+                            <div class="uc-divider"></div>
+                            <div class="uc-body">
+                                + iniciarSesion()
                             </div>
                         </div>
 
-                        <div style="flex: 1; text-align: center; padding: 0 0.5rem;">
-                            <div style="font-size: 0.45em; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">Externo</div>
-                            <div class="diagram-node" style="border-color: #3498db; font-size: 0.5em;">ServicioAzureSpeech</div>
-                            <div style="font-size: 0.4em; color: #888; margin-top: 4px;">procesa audio</div>
+                        <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.4em; color: #aaa;">
+                            <span>1</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 1.2em;">→</span>
+                            <span>*</span>
+                        </div>
+
+                        <div class="uml-card" style="border-color: #e67e22;">
+                            <div class="uc-name" style="color: #e67e22;">SesionEvaluacion</div>
+                            <div class="uc-body">
+                                + idSesion : UUID<br>
+                                + fechaInicio : DateTime<br>
+                                + aciertos, errores : int
+                            </div>
+                            <div class="uc-divider"></div>
+                            <div class="uc-body">
+                                + calcularPrecision()<br>
+                                + generarReporte()
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.4em; color: #aaa;">
+                            <span>*</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 1.2em;">→</span>
+                            <span>1</span>
+                        </div>
+
+                        <div class="uml-card" style="border-color: #2ecc71;">
+                            <div class="uc-name" style="color: #2ecc71;">TextoEstudio</div>
+                            <div class="uc-body">
+                                + idTexto : int<br>
+                                + titulo : String<br>
+                                + palabras[] : String
+                            </div>
+                            <div class="uc-divider"></div>
+                            <div class="uc-body">
+                                + obtenerPalabra()
+                            </div>
                         </div>
                     </div>
 
-                    <div style="margin-top: 0.5rem; font-size: 0.4em; color: #666; text-align: center; line-height: 1.6;">
-                        <span style="background: rgba(155,89,182,0.12); padding: 2px 8px; border-radius: 3px;">Usuario 1 → * SesionEvaluacion</span>
-                        <span style="background: rgba(46,204,113,0.12); padding: 2px 8px; border-radius: 3px;">* SesionEvaluacion → 1 TextoEstudio</span>
-                        <span style="background: rgba(155,89,182,0.12); padding: 2px 8px; border-radius: 3px;">1 SesionEvaluacion → 1 AlgoritmoComparacion</span>
-                        <br>
-                        <span style="background: rgba(26,188,156,0.12); padding: 2px 8px; border-radius: 3px;">AlgoritmoComparacion consume &laquo;interface&raquo; MotorReconocimientoVoz</span>
-                        <span style="background: rgba(52,152,219,0.12); padding: 2px 8px; border-radius: 3px;">ServicioAzureSpeech implementa MotorReconocimientoVoz</span>
+                    <!-- Down arrow: SesionEvaluacion → AlgoritmoComparacion -->
+                    <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.4em; color: #aaa;">
+                        <span style="color: rgba(255,255,255,0.3); font-size: 1.2em;">↓</span>
+                        <span>1 → 1</span>
+                    </div>
+
+                    <!-- Row 2: AlgoritmoComparacion → MotorReconocimientoVoz -->
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+
+                        <div class="uml-card" style="border-color: #9b59b6;">
+                            <div class="uc-name" style="color: #9b59b6;">AlgoritmoComparacion</div>
+                            <div class="uc-body">
+                                - textoRef : TextoEstudio
+                            </div>
+                            <div class="uc-divider"></div>
+                            <div class="uc-body">
+                                + evaluarCoincidencia()<br>
+                                + sincronizarFlujo()
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.4em; color: #aaa;">
+                            <span style="color: rgba(255,255,255,0.3); font-size: 1.2em;">→</span>
+                            <span>consume</span>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.2rem;">
+                            <div class="uml-card" style="border-color: #1abc9c; border-style: dashed;">
+                                <div class="uc-name" style="color: #1abc9c; font-style: italic;">&laquo;interface&raquo;<br>MotorReconocimientoVoz</div>
+                                <div class="uc-divider"></div>
+                                <div class="uc-body">
+                                    + iniciarStreamAudio()<br>
+                                    + detenerStreamAudio()
+                                </div>
+                            </div>
+
+                            <div style="font-size: 0.4em; color: #aaa;">
+                                <span style="color: rgba(255,255,255,0.3); font-size: 1.2em;">↑</span>
+                                <br><span>implementa</span>
+                            </div>
+
+                            <div class="uml-card" style="border-color: #3498db;">
+                                <div class="uc-name" style="color: #3498db;">ServicioAzureSpeech</div>
+                                <div class="uc-body">
+                                    - claveAcceso : String<br>
+                                    - region : String
+                                </div>
+                                <div class="uc-divider"></div>
+                                <div class="uc-body">
+                                    + establecerConexion()<br>
+                                    - convertirAudio()
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
